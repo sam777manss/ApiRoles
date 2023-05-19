@@ -1,0 +1,69 @@
+﻿@model Client.Models.LoginModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@*<form asp-controller="Home" asp-action="Index" method="post">*@
+    @Html.AntiForgeryToken()
+    <div class=" fieldset">
+        <div class="row">
+            <div class="form-group">
+                <div class="field st-email">
+                <input type="Username" class="form-control " asp-for="Username" placeholder="Username" maxlength="150" />
+                    <span class=" text-danger validation" asp-validation-for="Username"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field st-lock">
+        <input type="password" class="form-control st-lock" asp-for="Password" placeholder="Password" maxlength="50" />
+        <span class=" text-danger validation" asp-validation-for="Password"></span>
+    </div>
+    <br />
+
+    <div class="form-group mb-2">
+        <button class="btn w-100 st-btn-common" type="submit" onclick="return FormDataValidate()">Login</button>
+    </div>
+
+@*</form>*@
+<script>
+    function FormDataValidate(){
+    var username = document.getElementById("Username").value;
+    var password = document.getElementById("Password").value;
+    debugger
+    const formData = new FormData();
+    formData.append("Username", username);
+    formData.append("Password", password);
+
+    $.ajax({
+        url: 'https://localhost:7140/api/Authenticate/login',
+        method: 'POST',
+        dataType: 'json',
+        contentType: false, // Set to false to prevent jQuery from setting the Content-Type header
+        processData: false, // Set to false to prevent jQuery from processing the data
+        data: formData,
+        success: function (data) {
+            //alert("Saved successfully");
+                iziToast.success({
+                    timeout: 10000,
+                    title: 'Hey',
+                    message: data.message
+                });
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            //alert("Request failed: " + textStatus);
+                iziToast.success({
+                    timeout: 10000,
+                    title: 'Hey',
+                    message: data.message
+                });
+        }
+    })
+    return false;
+    }
+</script>
