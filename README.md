@@ -19,3 +19,16 @@ select - raw(json)
     username:"sameer",
     password:"password"
 }
+
+----------------------------------------------------------------------------------------------------------------------
+Is all sites use jwt token
+and after registration it store token in local storage
+if i visits many sites that means many token in local storage
+So it become tedious to handle. Is there any alternative solution for it
+
+there are alternative solutions you can consider:
+Session-based authentication:
+Single Sign-On (SSO): 
+Token-based authentication
+
+-----------------------------------------------------------------------------------------------------------------------
