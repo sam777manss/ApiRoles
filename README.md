@@ -17,5 +17,5 @@ then
 select - raw(json)
 {
     username:"sameer",
-    password:"Same1998@"
+    password:"password"
 }
