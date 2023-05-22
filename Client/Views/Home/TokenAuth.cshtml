@@ -1,0 +1,53 @@
+﻿@model Client.Models.TokenResponseModel
+
+@{
+    ViewData["Title"] = "TokenAuth";
+}
+
+<h1>TokenAuth</h1>
+
+<h4>TokenResponseModel</h4>
+<hr />
+
+@using (Html.BeginForm("TokenAuth", "Home", FormMethod.Post,
+                    new { enctype = "multipart/form-data" }))
+            {
+<div class="row">
+    <div class="col-md-4">
+        @*<form asp-action="TokenAuth">*@
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+@*                <label asp-for="Token" class="control-label"></label>
+                <input asp-for="Token" class="form-control" disabled/>
+                <span asp-validation-for="Token" class="text-danger"></span>*@
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Token, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Token, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Token, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+@*                <label asp-for="Expiration" class="control-label"></label>
+                <input asp-for="Expiration" class="form-control" disabled/>
+                <span asp-validation-for="Expiration" class="text-danger"></span>*@
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Expiration, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Expiration, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Expiration, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        @*</form>*@
+    </div>
+</div>
+}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ApiRoles.Controllers
 {
@@ -23,6 +24,8 @@ namespace ApiRoles.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+            //var userId = User.FindFirst("sub");
+            string? user = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
