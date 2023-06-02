@@ -1,7 +1,7 @@
 # ApiRoles
 
 JWT Steps
-1) Right Click on Project folder name in this case 
+1) Right Click on Project folder name. In this case 
 ApiRoles -> properties -> Debug -> Gerenal (Open debug launch profiles UI) 
 in ApiRoles Scroll Down and on 
 App URL box put this :- https://localhost:7140
@@ -24,7 +24,7 @@ select - raw(json)
 Is all sites use jwt token
 and after registration it store token in local storage
 if i visits many sites that means many token in local storage
-So it become tedious to handle. Is there any alternative solution for it
+So it becomes tedious to handle. Is there any alternative solution for it
 
 there are alternative solutions you can consider:
 Session-based authentication:
